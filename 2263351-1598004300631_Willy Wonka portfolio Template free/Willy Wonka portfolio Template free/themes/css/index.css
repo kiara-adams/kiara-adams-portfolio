@@ -494,18 +494,31 @@ body{
     padding-right: 50px;
     flex-direction: row;
 }
-.about-img img{
+/* .about-img img{
     width: 500px;
     height:700px;
     padding: 30px;
-    border-radius: 40px;
+    border-radius: 50%;
+} */
+.about-img img {
+    width: 400px;
+    height: 500px;
+    padding: 5px;
+    border-radius: 50%;
+    border: 3px solid #c70039; /* Ensuring border visibility */
+    box-shadow: 0 0 15px rgba(245, 32, 75, 0.8); /* Red glow effect */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.about-img img:hover {
+    box-shadow: 0 0 30px #c70039(169, 0, 0, 1); /* Stronger glow on hover */
 }
 .about-img {
     width: 550px;
     height:600px;
     padding: 30px;
     padding-top: 10px;
-    border-radius: 40px;
+    border-radius: 50%;
 }
 
 #about-content a{
@@ -1631,8 +1644,24 @@ For devices with smaller width like mobile phone
         width: 280px;
         height:300px;
         padding: 5px;
-        border-radius: 10%;
+        border-radius: 50%;
+        box-shadow: #a90000;
+        border-color: #035aa6;
     }
+    .about-img img {
+        width: 280px;
+        height: 300px;
+        padding: 5px;
+        border-radius: 50%;
+        border: 3px solid #c70039; /* Ensuring border visibility */
+        box-shadow: 0 0 15px rgba(245, 32, 75, 0.8); /* Red glow effect */
+        transition: box-shadow 0.3s ease-in-out;
+    }
+    
+    .about-img img:hover {
+        box-shadow: 0 0 30px #c70039(169, 0, 0, 1); /* Stronger glow on hover */
+    }
+    
     .about-img {
         width: 100%;
         height:400px;
@@ -2083,19 +2112,19 @@ for tabs and large phones
         padding-right: 10px;
         flex-direction: column-reverse;
     }
-    .about-img img{
+    /* .about-img img{
         width: 100%;
         height:530px;
         padding: 30px;
         border-radius: 40px;
-    }
-    .about-img {
+    } */
+    /* .about-img {
         width: 550px;
         height:650px;
         padding: 30px;
         padding-top: 10px;
         border-radius: 40px;
-    }
+    } */
     .cv a button{
         border:none;
         padding: 20px 30px;
