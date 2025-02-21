@@ -190,3 +190,70 @@ $(function(){
   $('.navigation-close').hover(cursorhover,cursor);
 
 })
+
+
+// education carousel 
+document.addEventListener("DOMContentLoaded", function () {
+  const track = document.querySelector(".carousel-track");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const certificates = document.querySelectorAll(".certificate");
+
+  let index = 0;
+  const visibleItems = 7; // Number of visible certificates at a time
+  const totalItems = certificates.length;
+  const itemWidth = certificates[0].offsetWidth + 90; // Adjust for spacing
+
+  // Clone first few elements for infinite looping effect
+  for (let i = 0; i < visibleItems; i++) {
+      let clone = certificates[i].cloneNode(true);
+      track.appendChild(clone);
+  }
+
+  function updateCarousel() {
+      track.style.transition = "transform 0.5s ease-in-out";
+      track.style.transform = `translateX(-${index * itemWidth}px)`;
+
+      // Handle looping effect
+      if (index >= totalItems) {
+          setTimeout(() => {
+              track.style.transition = "none"; // Disable animation for instant jump
+              index = 0;
+              track.style.transform = `translateX(-${index * itemWidth}px)`;
+          }, 500);
+      }
+  }
+
+  nextBtn.addEventListener("click", () => {
+      if (index < totalItems) {
+          index++;
+      }
+      updateCarousel();
+  });
+
+  prevBtn.addEventListener("click", () => {
+      if (index > 0) {
+          index--;
+      } else {
+          index = totalItems - 1;
+      }
+      updateCarousel();
+  });
+
+  // Auto-scroll every 3 seconds
+  let autoScroll = setInterval(() => {
+      nextBtn.click();
+  }, 3000);
+
+  // Pause auto-scroll when hovering over the carousel
+  document.querySelector(".carousel-container").addEventListener("mouseenter", () => {
+      clearInterval(autoScroll);
+  });
+
+  // Resume auto-scroll when mouse leaves
+  document.querySelector(".carousel-container").addEventListener("mouseleave", () => {
+      autoScroll = setInterval(() => {
+          nextBtn.click();
+      }, 3000);
+  });
+});
